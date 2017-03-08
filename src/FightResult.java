@@ -1,0 +1,21 @@
+import java.util.Collection;
+
+public class FightResult {
+
+	private Collection<Fight> wonFights;
+
+	private Collection<Fight> lostFights;
+
+	public FightResult(Collection<Fight> wonFights, Collection<Fight> lostFights) {
+		this.wonFights = wonFights;
+		this.lostFights = lostFights;
+	}
+
+	public Collection<Fight> getWonFights() {
+		return wonFights;
+	}
+
+	public Collection<Fight> getLostFights() {
+		return lostFights;
+	}
+}

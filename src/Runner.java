@@ -7,8 +7,8 @@ public class Runner {
 		AsciiArtPrinter.draw();
 		Statistic stats = new Statistic(Fight.getAll());
 
-		// StatisticTEST stats = new StatisticTEST(Fight.getAll());
-		System.out.println(stats.toString());
-		DataProvider.printStatsForCombination();
+		stats.printGeneralInformation();
+		stats.printStatsForCombination(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
+		stats.printOverallClassPresence();
 	}
 }

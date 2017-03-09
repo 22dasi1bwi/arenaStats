@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,7 +26,7 @@ public class Statistic {
 
 	private double defeatRate;
 
-	private static final List<Fight> ALL_FIGHTS = Fight.getAll();
+	private final Collection<Fight> allFights;
 
 	public Statistic(Collection<Fight> data) {
 		this.wins = retrieveWonFights(data).size();
@@ -36,52 +35,87 @@ public class Statistic {
 
 		winRate = (double) wins / (double) totalPlayed;
 		defeatRate = (double) defeats / (double) totalPlayed;
+		this.allFights = data;
 	}
 
-	public static void printStatsForCombination(Combination combination) {
+	/**
+	 * Prints information about all given fights, which includes:
+	 * <p>
+	 * <ul>
+	 * <li>Total played</li>
+	 * <li>Won</li>
+	 * <li>Lost</li>
+	 * <li>Win-Rate</li>
+	 * <li>Loose-Rate</li> defeats
+	 */
+	public void printGeneralInformation() {
+		System.out.println("TOTAL PLAYED: " + totalPlayed + "\nWON: " + wins + "\nLOST: " + defeats + " \nWIN-RATE: "
+				+ winRate + "\nLOOSE-RATE: " + defeatRate);
+	}
+
+	/**
+	 * Prints all relevant information for the given combination of classes,
+	 * which includes:
+	 * <ul>
+	 * <li>The most Valuable build</li>
+	 * <li>The most Valuable focus target</li>
+	 * <li>Helpful notes of won fights</li>
+	 * <li>Helpful notes of lost fights</li>
+	 * <li>Builds for lost fights</li>
+	 * 
+	 * @param combination
+	 *            The combination you are faced with.
+	 */
+	public void printStatsForCombination(Combination combination) {
 		System.out.println("\n\nRetrieving matches for combination [" + combination.getFirstClass() + " / "
 				+ combination.getSecondClass() + "] ...");
-		List<Fight> fightsForCombination = ALL_FIGHTS.stream()
+		List<Fight> fightsForCombination = allFights.stream()
 				.filter(fight -> fight.getCombination().equals(combination)).collect(Collectors.toList());
 
 		if (fightsForCombination.isEmpty()) {
 			System.out.println("\n\nYou haven't played against this combination yet.\n\n");
-			printOverallClassPresence();
-			return;
 		}
-
 		Collection<Fight> wonFightsForCombination = retrieveWonFights(fightsForCombination);
 		Collection<Fight> lostFightsForCombination = retrieveLostFights(fightsForCombination);
 		System.out.println("WON: " + wonFightsForCombination.size());
 		System.out.println("LOST: " + lostFightsForCombination.size());
 
-		gatherInformation(wonFightsForCombination, lostFightsForCombination);
-		printOverallClassPresence();
+		FightInformation informationForCombination = analyzeInformationForCombination(wonFightsForCombination,
+				lostFightsForCombination);
+		printInformationForCombination(informationForCombination);
 	}
 
-	private static void gatherInformation(Collection<Fight> wonFightsForCombination,
+	private FightInformation analyzeInformationForCombination(Collection<Fight> wonFightsForCombination,
 			Collection<Fight> lostFightsForCombination) {
-		System.out.println("\n\nSearch for the most valueable option ... \n");
+		System.out.println("\n\nSearch for the most Valuable option ... \n");
 
-		// Highest winrate, Talents and focus on won fights
+		// Highest win-rate, talents and focus on won fights
 		List<Collection<Talent>> wonBuilds = retrieveBuildsForCombinations(wonFightsForCombination);
-		System.out.println("BUILD: " + getMostValueableBuild(wonBuilds));
-		System.out.println("FOCUS: " + getMostValueableFocusTarget(wonFightsForCombination));
-
-		System.out
-				.println("Helpful notes from won battles: " + retrieveNotesForWonCombinations(wonFightsForCombination));
-		System.out.println(
-				"Helpful notes from lost battles: " + retrieveNotesForLostCombinations(lostFightsForCombination));
+		Collection<Talent> mostValuableBuild = getMostValuableBuild(wonBuilds);
+		Class mostValuableFocusTarget = getMostValuableFocusTarget(wonFightsForCombination);
+		Collection<String> notesForWonCombinations = retrieveNotesForWonCombinations(wonFightsForCombination);
+		Collection<String> notesForLostCombinations = retrieveNotesForLostCombinations(lostFightsForCombination);
 		List<Collection<Talent>> lostBuilds = retrieveBuildsForCombinations(lostFightsForCombination);
+
+		return new FightInformation(wonBuilds, mostValuableBuild, mostValuableFocusTarget, notesForWonCombinations,
+				notesForLostCombinations, lostBuilds, Collections.emptyList());
+	}
+
+	private void printInformationForCombination(FightInformation informationForCombination) {
+		System.out.println("BUILD: " + informationForCombination.getMostValuableBuild());
+		System.out.println("FOCUS: " + informationForCombination.getMostValuableFocusTarget());
+		System.out.println("Helpful notes from won battles: " + informationForCombination.getNotesForWonCombinations());
 		System.out
-				.println("Matches were lost with the following builds: " + getLeastValueableBuild(lostBuilds) + "\n\n");
+				.println("Helpful notes from lost battles: " + informationForCombination.getNotesForLostCombinations());
+		System.out.println("Matches were lost with the following builds: "
+				+ informationForCombination.getBuildsThatLostFights() + "\n\n");
 
 	}
 
-	private static void printOverallClassPresence() {
+	public void printOverallClassPresence() {
 		System.out.println("OVERALL CLASS PRESENCE:\n");
 
-		Map<Class, Long> classCounts = ALL_FIGHTS.stream().map(Fight::getCombination)
+		Map<Class, Long> classCounts = allFights.stream().map(Fight::getCombination)
 				.flatMap(combination -> Stream.of(combination.getFirstClass(), combination.getSecondClass()))
 				.collect(groupingBy(Function.identity(), counting()));
 
@@ -89,7 +123,8 @@ public class Statistic {
 	}
 
 	private static void calculatePresence(Map<Class, Long> classCounts) {
-		double sumOfClassCounts = classCounts.values().stream().mapToDouble(count -> count.doubleValue()).sum();
+		double sumOfClassCounts = classCounts.values().stream().mapToDouble(classCount -> classCount.doubleValue())
+				.sum();
 
 		classCounts.entrySet().stream().sorted(Map.Entry.<Class, Long>comparingByValue().reversed()).forEach(entry -> {
 			BigDecimal averagePerClass = new BigDecimal(entry.getValue() / sumOfClassCounts)
@@ -99,7 +134,7 @@ public class Statistic {
 		;
 	}
 
-	private static Collection<Talent> getMostValueableBuild(List<Collection<Talent>> buildsPlayedOnWonFights) {
+	private static Collection<Talent> getMostValuableBuild(List<Collection<Talent>> buildsPlayedOnWonFights) {
 		if (!buildsPlayedOnWonFights.isEmpty()) {
 			return Collections
 					.max(buildsPlayedOnWonFights.stream().collect(groupingBy(Function.identity(), counting()))
@@ -109,11 +144,7 @@ public class Statistic {
 		return Collections.emptyList();
 	}
 
-	private static Set<Collection<Talent>> getLeastValueableBuild(List<Collection<Talent>> buildsPlayedOnLostFights) {
-		return buildsPlayedOnLostFights.stream().collect(groupingBy(Function.identity(), counting())).keySet();
-	}
-
-	private static Class getMostValueableFocusTarget(Collection<Fight> fightsToEvaluate) {
+	private static Class getMostValuableFocusTarget(Collection<Fight> fightsToEvaluate) {
 		if (!fightsToEvaluate.isEmpty()) {
 			return Collections
 					.max(fightsToEvaluate.stream().collect(groupingBy(Function.identity(), counting())).entrySet(),
@@ -143,31 +174,5 @@ public class Statistic {
 
 	private static List<Collection<Talent>> retrieveBuildsForCombinations(Collection<Fight> fightsForCombination) {
 		return fightsForCombination.stream().map(fight -> fight.getTalents()).collect(toList());
-	}
-
-	public long getWins() {
-		return wins;
-	}
-
-	public long getDefeats() {
-		return defeats;
-	}
-
-	public long getTotalPlayed() {
-		return totalPlayed;
-	}
-
-	public double getWinRate() {
-		return winRate;
-	}
-
-	public double getDefeatRate() {
-		return defeatRate;
-	}
-
-	@Override
-	public String toString() {
-		return "TOTAL PLAYED: " + getTotalPlayed() + "\nWON: " + getWins() + "\nLOST: " + getDefeats() + " \nWIN-RATE: "
-				+ getWinRate() + "\nLOOSE-RATE: " + getDefeatRate();
 	}
 }

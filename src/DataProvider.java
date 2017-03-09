@@ -735,9 +735,4 @@ public class DataProvider {
 				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
 				Class.DRUID_RESTORATION, Result.DEFEAT, "");
 	}
-
-	public static void printStatsForCombination() {
-		Statistic.printStatsForCombination(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
-	}
-
 }

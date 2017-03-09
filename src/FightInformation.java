@@ -5,9 +5,9 @@ public class FightInformation {
 
 	private Collection<Collection<Talent>> buildsThatWonFight;
 
-	private Collection<Talent> mostValueableBuild;
+	private Collection<Talent> mostValuableBuild;
 
-	private Class mostValueableFocusTarget;
+	private Class mostValuableFocusTarget;
 
 	private Collection<String> notesForWonCombinations;
 
@@ -17,13 +17,13 @@ public class FightInformation {
 
 	private Collection<Fight> fights;
 
-	public FightInformation(Collection<Collection<Talent>> buildsThatWonFight, Collection<Talent> mostValueableBuild,
-			Class mostValueableFocusTarget, Collection<String> notesForWonCombinations,
+	public FightInformation(Collection<Collection<Talent>> buildsThatWonFight, Collection<Talent> mostValuableBuild,
+			Class mostValuableFocusTarget, Collection<String> notesForWonCombinations,
 			Collection<String> notesForLostCombinations, List<Collection<Talent>> buildsThatLostFights,
 			Collection<Fight> fights) {
 		this.buildsThatWonFight = buildsThatWonFight;
-		this.mostValueableBuild = mostValueableBuild;
-		this.mostValueableFocusTarget = mostValueableFocusTarget;
+		this.mostValuableBuild = mostValuableBuild;
+		this.mostValuableFocusTarget = mostValuableFocusTarget;
 		this.notesForWonCombinations = notesForWonCombinations;
 		this.notesForLostCombinations = notesForLostCombinations;
 		this.buildsThatLostFights = buildsThatLostFights;
@@ -34,12 +34,12 @@ public class FightInformation {
 		return buildsThatWonFight;
 	}
 
-	public Collection<Talent> getMostValueableBuild() {
-		return mostValueableBuild;
+	public Collection<Talent> getMostValuableBuild() {
+		return mostValuableBuild;
 	}
 
-	public Class getMostValueableFocusTarget() {
-		return mostValueableFocusTarget;
+	public Class getMostValuableFocusTarget() {
+		return mostValuableFocusTarget;
 	}
 
 	public Collection<String> getNotesForWonCombinations() {

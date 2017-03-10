@@ -93,7 +93,7 @@ public class StatisticTest {
 
 		Collection<String> notesForCombination = Statistic.retrieveNotesForCombinations(Fight.getAll());
 		Assert.assertEquals(1, notesForCombination.size());
-		Assert.assertEquals(true, notesForCombination.contains("pressure on arms was good"));
+		Assert.assertTrue(notesForCombination.contains("pressure on arms was good"));
 	}
 
 	@Test
@@ -111,14 +111,13 @@ public class StatisticTest {
 		Set<Talent> mostValuableTalents = Statistic
 				.getMostValuableTalents(Fight.getAll().stream().map(Fight::getBuild).collect(Collectors.toList()));
 		Assert.assertEquals(2, mostValuableTalents.size());
-		Assert.assertEquals(true,
-				mostValuableTalents.containsAll(Arrays.asList(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)));
+		Assert.assertTrue(mostValuableTalents.containsAll(Arrays.asList(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)));
 	}
 
 	@Test
 	public void shouldReturnEmptySetWhenThereAreNoFightsToEvaluate() {
 		Set<Talent> mostValuableTalents = Statistic.getMostValuableTalents(Collections.emptyList());
-		Assert.assertEquals(true, mostValuableTalents.isEmpty());
+		Assert.assertTrue(mostValuableTalents.isEmpty());
 	}
 
 	@Test
@@ -134,8 +133,8 @@ public class StatisticTest {
 		Collection<Build> buildsForCombinations = Statistic.retrieveBuildsForCombinations(Fight.getAll());
 
 		Assert.assertEquals(2, buildsForCombinations.size());
-		Assert.assertEquals(true, buildsForCombinations.contains(build1));
-		Assert.assertEquals(true, buildsForCombinations.contains(build2));
+		Assert.assertTrue(buildsForCombinations.contains(build1));
+		Assert.assertTrue(buildsForCombinations.contains(build2));
 	}
 
 	@Test
@@ -154,8 +153,8 @@ public class StatisticTest {
 		List<Fight> distinctByFocusTarget = Fight.getAll().stream().filter(distinctByKey).collect(Collectors.toList());
 
 		Assert.assertEquals(2, distinctByFocusTarget.size());
-		Assert.assertEquals(true, distinctByFocusTarget.contains(fight1));
-		Assert.assertEquals(true, distinctByFocusTarget.contains(fight3));
+		Assert.assertTrue(distinctByFocusTarget.contains(fight1));
+		Assert.assertTrue(distinctByFocusTarget.contains(fight3));
 	}
 
 	@Test
@@ -174,7 +173,7 @@ public class StatisticTest {
 		Collection<Build> buildsForCombinations = Statistic.retrieveDistinctBuildsForCombinations(Fight.getAll());
 
 		Assert.assertEquals(2, buildsForCombinations.size());
-		Assert.assertEquals(true, buildsForCombinations.contains(build1));
-		Assert.assertEquals(true, buildsForCombinations.contains(build2));
+		Assert.assertTrue(buildsForCombinations.contains(build1));
+		Assert.assertTrue(buildsForCombinations.contains(build2));
 	}
 }

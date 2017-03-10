@@ -15,19 +15,15 @@ public class FightInformation {
 
 	private List<Collection<Talent>> buildsThatLostFights;
 
-	private Collection<Fight> fights;
-
 	public FightInformation(Collection<Collection<Talent>> buildsThatWonFight, Collection<Talent> mostValuableBuild,
 			Class mostValuableFocusTarget, Collection<String> notesForWonCombinations,
-			Collection<String> notesForLostCombinations, List<Collection<Talent>> buildsThatLostFights,
-			Collection<Fight> fights) {
+			Collection<String> notesForLostCombinations, List<Collection<Talent>> buildsThatLostFights) {
 		this.buildsThatWonFight = buildsThatWonFight;
 		this.mostValuableBuild = mostValuableBuild;
 		this.mostValuableFocusTarget = mostValuableFocusTarget;
 		this.notesForWonCombinations = notesForWonCombinations;
 		this.notesForLostCombinations = notesForLostCombinations;
 		this.buildsThatLostFights = buildsThatLostFights;
-		this.fights = fights;
 	}
 
 	public Collection<Collection<Talent>> getBuildsThatWonFight() {
@@ -52,9 +48,5 @@ public class FightInformation {
 
 	public List<Collection<Talent>> getBuildsThatLostFights() {
 		return buildsThatLostFights;
-	}
-
-	public Collection<Fight> getFights() {
-		return fights;
 	}
 }

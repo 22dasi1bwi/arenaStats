@@ -9,6 +9,6 @@ public class Runner {
 
 		stats.printGeneralInformation();
 		stats.printStatsForCombination(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
-		stats.printOverallClassPresence();
+		stats.printOverallClassPresence(stats.getAllFights());
 	}
 }

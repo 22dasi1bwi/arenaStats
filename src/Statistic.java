@@ -47,6 +47,7 @@ public class Statistic {
 	 * <li>Lost</li>
 	 * <li>Win-Rate</li>
 	 * <li>Loose-Rate</li> defeats
+	 * </ul>
 	 */
 	public void printGeneralInformation() {
 		System.out.println("TOTAL PLAYED: " + totalPlayed + "\nWON: " + wins + "\nLOST: " + defeats + " \nWIN-RATE: "
@@ -62,6 +63,7 @@ public class Statistic {
 	 * <li>Helpful notes of won fights</li>
 	 * <li>Helpful notes of lost fights</li>
 	 * <li>Builds for lost fights</li>
+	 * </ul>
 	 * 
 	 * @param combination
 	 *            The combination you are faced with.
@@ -85,6 +87,19 @@ public class Statistic {
 		printInformationForCombination(informationForCombination);
 	}
 
+	/**
+	 * Prints the overall class presence for the given fights.
+	 */
+	public void printOverallClassPresence(Collection<Fight> fights) {
+		System.out.println("OVERALL CLASS PRESENCE:\n");
+
+		Map<Class, Long> classCounts = fights.stream().map(Fight::getCombination)
+				.flatMap(combination -> Stream.of(combination.getFirstClass(), combination.getSecondClass()))
+				.collect(groupingBy(Function.identity(), counting()));
+
+		calculatePresence(classCounts);
+	}
+
 	private FightInformation analyzeInformationForCombination(Collection<Fight> wonFightsForCombination,
 			Collection<Fight> lostFightsForCombination) {
 		System.out.println("\n\nSearch for the most Valuable option ... \n");
@@ -98,7 +113,7 @@ public class Statistic {
 		List<Collection<Talent>> lostBuilds = retrieveBuildsForCombinations(lostFightsForCombination);
 
 		return new FightInformation(wonBuilds, mostValuableBuild, mostValuableFocusTarget, notesForWonCombinations,
-				notesForLostCombinations, lostBuilds, Collections.emptyList());
+				notesForLostCombinations, lostBuilds);
 	}
 
 	private void printInformationForCombination(FightInformation informationForCombination) {
@@ -109,17 +124,6 @@ public class Statistic {
 				.println("Helpful notes from lost battles: " + informationForCombination.getNotesForLostCombinations());
 		System.out.println("Matches were lost with the following builds: "
 				+ informationForCombination.getBuildsThatLostFights() + "\n\n");
-
-	}
-
-	public void printOverallClassPresence() {
-		System.out.println("OVERALL CLASS PRESENCE:\n");
-
-		Map<Class, Long> classCounts = allFights.stream().map(Fight::getCombination)
-				.flatMap(combination -> Stream.of(combination.getFirstClass(), combination.getSecondClass()))
-				.collect(groupingBy(Function.identity(), counting()));
-
-		calculatePresence(classCounts);
 	}
 
 	private static void calculatePresence(Map<Class, Long> classCounts) {
@@ -174,5 +178,9 @@ public class Statistic {
 
 	private static List<Collection<Talent>> retrieveBuildsForCombinations(Collection<Fight> fightsForCombination) {
 		return fightsForCombination.stream().map(fight -> fight.getTalents()).collect(toList());
+	}
+
+	public Collection<Fight> getAllFights() {
+		return allFights;
 	}
 }

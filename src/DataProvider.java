@@ -650,18 +650,6 @@ public class DataProvider {
 		new Fight(new Combination(Class.ROGUE_SUBTLETY, Class.MAGE_FIRE),
 				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
 				Class.MAGE_FIRE, Result.WIN, "");
-		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.ROGUE_ASSASINATION),
-				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART),
-				Class.ROGUE_ASSASINATION, Result.DEFEAT, "does crusader heal more???");
-		new Fight(new Combination(Class.WARRIOR_FURY, Class.SHAMAN_RESTORATION),
-				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.SHAMAN_RESTORATION, Result.DEFEAT, "");
-		new Fight(new Combination(Class.DRUID_RESTORATION, Class.HUNTER_SURVIVAL),
-				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.HUNTER_SURVIVAL, Result.DEFEAT, "1,1%");
-		new Fight(new Combination(Class.DRUID_RESTORATION, Class.DEMONHUNTER_HAVOC),
-				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.DEMONHUNTER_HAVOC, Result.DEFEAT, "");
 		new Fight(new Combination(Class.ROGUE_ASSASINATION, Class.DEMONHUNTER_HAVOC),
 				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART),
 				Class.DEMONHUNTER_HAVOC, Result.WIN, "");
@@ -686,12 +674,6 @@ public class DataProvider {
 		new Fight(new Combination(Class.PALADIN_HOLY, Class.SHAMAN_ELEMENTAL),
 				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
 				Class.SHAMAN_ELEMENTAL, Result.WIN, "");
-		new Fight(new Combination(Class.DEMONHUNTER_HAVOC, Class.PRIEST_DISCIPLINE),
-				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.SHAMAN_ELEMENTAL, Result.DEFEAT, "");
-		new Fight(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION),
-				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.DEMONHUNTER_HAVOC, Result.DEFEAT, "");
 		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.ROGUE_ASSASINATION),
 				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART),
 				Class.ROGUE_ASSASINATION, Result.WIN, "");
@@ -718,13 +700,6 @@ public class DataProvider {
 				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
 				Class.PRIEST_DISCIPLINE, Result.DEFEAT,
 				"not even with full crusader burst at the beginning of the game I was able to heal me up");
-		new Fight(
-				new Combination(Class.PRIEST_SHADOW, Class.MAGE_FIRE), Lists.newArrayList(Talent.CRUSADER, Talent.BLIND,
-						Talent.GLADIATOR, Talent.LIGHTS_GRACE, Talent.BEACON_OF_FAITH),
-				Class.MAGE_FIRE, Result.DEFEAT, "my individual mistake");
-		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.SHAMAN_ENHANCEMENT),
-				Lists.newArrayList(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
-				Class.SHAMAN_ENHANCEMENT, Result.DEFEAT, "individual mistake");
 		new Fight(new Combination(Class.DRUID_RESTORATION, Class.DEMONHUNTER_HAVOC),
 				Lists.newArrayList(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE),
 				Class.DRUID_RESTORATION, Result.DEFEAT, "");

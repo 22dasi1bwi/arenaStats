@@ -1,3 +1,4 @@
+package fight;
 
 public class Combination {
 

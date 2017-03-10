@@ -1,3 +1,11 @@
+package run;
+import data.AsciiArtPrinter;
+import data.DataProvider;
+import fight.Class;
+import fight.Combination;
+import fight.Fight;
+import statistic.Statistic;
+
 public class Runner {
 
 	public static void main(String[] args) {

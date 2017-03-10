@@ -1,11 +1,13 @@
+package fight;
 import java.util.Collection;
-import java.util.List;
+
+import skill.Build;
 
 public class FightInformation {
 
-	private Collection<Collection<Talent>> buildsThatWonFight;
+	private Collection<Build> buildsThatWonFight;
 
-	private Collection<Talent> mostValuableBuild;
+	private Build mostValuableBuild;
 
 	private Class mostValuableFocusTarget;
 
@@ -13,11 +15,11 @@ public class FightInformation {
 
 	private Collection<String> notesForLostCombinations;
 
-	private List<Collection<Talent>> buildsThatLostFights;
+	private Collection<Build> buildsThatLostFights;
 
-	public FightInformation(Collection<Collection<Talent>> buildsThatWonFight, Collection<Talent> mostValuableBuild,
+	public FightInformation(Collection<Build> buildsThatWonFight, Build mostValuableBuild,
 			Class mostValuableFocusTarget, Collection<String> notesForWonCombinations,
-			Collection<String> notesForLostCombinations, List<Collection<Talent>> buildsThatLostFights) {
+			Collection<String> notesForLostCombinations, Collection<Build> buildsThatLostFights) {
 		this.buildsThatWonFight = buildsThatWonFight;
 		this.mostValuableBuild = mostValuableBuild;
 		this.mostValuableFocusTarget = mostValuableFocusTarget;
@@ -26,11 +28,11 @@ public class FightInformation {
 		this.buildsThatLostFights = buildsThatLostFights;
 	}
 
-	public Collection<Collection<Talent>> getBuildsThatWonFight() {
+	public Collection<Build> getBuildsThatWonFight() {
 		return buildsThatWonFight;
 	}
 
-	public Collection<Talent> getMostValuableBuild() {
+	public Build getMostValuableBuild() {
 		return mostValuableBuild;
 	}
 
@@ -46,7 +48,7 @@ public class FightInformation {
 		return notesForLostCombinations;
 	}
 
-	public List<Collection<Talent>> getBuildsThatLostFights() {
+	public Collection<Build> getBuildsThatLostFights() {
 		return buildsThatLostFights;
 	}
 }

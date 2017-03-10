@@ -1,3 +1,5 @@
+package skill;
+import fight.Class;
 
 public enum Talent {
 

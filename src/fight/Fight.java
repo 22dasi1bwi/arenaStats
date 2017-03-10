@@ -1,11 +1,13 @@
+package fight;
 import java.util.ArrayList;
-import java.util.Collection;
+
+import skill.Build;
 
 public class Fight {
 
 	private Combination combination;
 
-	private Collection<Talent> talents;
+	private Build build;
 
 	private Class focus;
 
@@ -15,9 +17,9 @@ public class Fight {
 
 	private static final ArrayList<Fight> ALL = new ArrayList<>();
 
-	public Fight(Combination combination, Collection<Talent> talents, Class focus, Result result, String note) {
+	public Fight(Combination combination, Build build, Class focus, Result result, String note) {
 		this.combination = combination;
-		this.talents = talents;
+		this.build = build;
 		this.focus = focus;
 		this.result = result;
 		this.note = note;
@@ -29,8 +31,8 @@ public class Fight {
 		return combination;
 	}
 
-	public Collection<Talent> getTalents() {
-		return talents;
+	public Build getBuild() {
+		return build;
 	}
 
 	public Class getFocus() {
@@ -51,7 +53,7 @@ public class Fight {
 
 	@Override
 	public String toString() {
-		return " with Build: " + getTalents() + " and focus on: " + getFocus() + " lead to: " + result + ". (NOTE: "
+		return " with Build: " + getBuild() + " and focus on: " + getFocus() + " lead to: " + result + ". (NOTE: "
 				+ getNote() + ")";
 	}
 }

@@ -19,6 +19,13 @@ public class Combination {
 		return secondClass;
 	}
 
+	public boolean containsClass(Class clazz) {
+		if (firstClass.equals(clazz) || secondClass.equals(clazz)) {
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {

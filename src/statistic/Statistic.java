@@ -1,5 +1,5 @@
 package statistic;
-import static java.lang.Math.toIntExact;
+
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -23,6 +24,7 @@ import fight.Fight;
 import fight.FightInformation;
 import fight.Result;
 import skill.Build;
+import skill.Talent;
 
 public class Statistic {
 
@@ -116,11 +118,11 @@ public class Statistic {
 
 		// Highest win-rate, talents and focus on won fights
 		Collection<Build> wonBuilds = retrieveBuildsForCombinations(wonFightsForCombination);
-		Build mostValuableBuild = getMostValuableBuild(wonBuilds);
+		Build mostValuableBuild = new Build(getMostValuableTalents(wonBuilds));
 		Class mostValuableFocusTarget = getMostValuableFocusTarget(wonFightsForCombination);
-		Collection<String> notesForWonCombinations = retrieveNotesForWonCombinations(wonFightsForCombination);
-		Collection<String> notesForLostCombinations = retrieveNotesForLostCombinations(lostFightsForCombination);
-		Collection<Build> lostBuilds = retrieveBuildsForCombinations(lostFightsForCombination);
+		Collection<String> notesForWonCombinations = retrieveNotesForCombinations(wonFightsForCombination);
+		Collection<String> notesForLostCombinations = retrieveNotesForCombinations(lostFightsForCombination);
+		Collection<Build> lostBuilds = retrieveDistinctBuildsForCombinations(lostFightsForCombination);
 
 		return new FightInformation(wonBuilds, mostValuableBuild, mostValuableFocusTarget, notesForWonCombinations,
 				notesForLostCombinations, lostBuilds);
@@ -148,21 +150,21 @@ public class Statistic {
 		;
 	}
 
-	static Build getMostValuableBuild(Collection<Build> buildsPlayedOnWonFights) {
+	static Set<Talent> getMostValuableTalents(Collection<Build> buildsPlayedOnWonFights) {
 		if (!buildsPlayedOnWonFights.isEmpty()) {
 			return Collections
-					.max(buildsPlayedOnWonFights.stream().collect(groupingBy(Function.identity(), counting()))
-							.entrySet(), (entry1, entry2) -> toIntExact(entry1.getValue() - entry2.getValue()))
+					.max(buildsPlayedOnWonFights.stream().collect(groupingBy(Build::getBuild, counting())).entrySet(),
+							(entry1, entry2) -> Long.compare(entry1.getValue(), entry2.getValue()))
 					.getKey();
 		}
-		return Build.EMPTY_BUILD;
+		return Collections.emptySet();
 	}
 
 	static Class getMostValuableFocusTarget(Collection<Fight> fightsToEvaluate) {
 		if (!fightsToEvaluate.isEmpty()) {
 			return Collections
 					.max(fightsToEvaluate.stream().collect(groupingBy(Function.identity(), counting())).entrySet(),
-							(entry1, entry2) -> toIntExact(entry1.getValue() - entry2.getValue()))
+							(entry1, entry2) -> Long.compare(entry1.getValue(), entry2.getValue()))
 					.getKey().getFocus();
 		}
 		return Class.NONE;
@@ -176,17 +178,16 @@ public class Statistic {
 		return fightsToEvaluate.stream().filter(fight -> fight.getResult().equals(Result.DEFEAT)).collect(toList());
 	}
 
-	static Collection<String> retrieveNotesForWonCombinations(Collection<Fight> fightsForCombination) {
+	static Collection<String> retrieveNotesForCombinations(Collection<Fight> fightsForCombination) {
 		return fightsForCombination.stream().filter(fight -> !fight.getNote().isEmpty()).map(fight -> fight.getNote())
 				.distinct().collect(toList());
 	}
 
-	static Collection<String> retrieveNotesForLostCombinations(Collection<Fight> fightsForCombination) {
-		return fightsForCombination.stream().filter(fight -> !fight.getNote().isEmpty()).map(fight -> fight.getNote())
-				.distinct().collect(toList());
+	static Collection<Build> retrieveBuildsForCombinations(Collection<Fight> fightsForCombination) {
+		return fightsForCombination.stream().map(fight -> fight.getBuild()).collect(toList());
 	}
 
-	Collection<Build> retrieveBuildsForCombinations(Collection<Fight> fightsForCombination) {
+	static Collection<Build> retrieveDistinctBuildsForCombinations(Collection<Fight> fightsForCombination) {
 		return fightsForCombination.stream().map(fight -> fight.getBuild()).filter(distinctByKey(Build::getBuild))
 				.collect(toList());
 	}

@@ -1,4 +1,5 @@
 package data;
+
 import com.google.common.collect.Sets;
 
 import fight.Class;
@@ -174,7 +175,7 @@ public class DataProvider {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND)), Class.DRUID_RESTORATION, Result.DEFEAT,
 				"");
 		new Fight(new Combination(Class.DEMONHUNTER_HAVOC, Class.DEMONHUNTER_HAVOC),
-				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND)), Class.WARLOCK_DESTRUCTION, Result.WIN,
+				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND)), Class.DEMONHUNTER_HAVOC, Result.WIN,
 				"");
 		new Fight(new Combination(Class.PALADIN_RETRIBUTION, Class.HUNTER_BEASTMASTERY),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND)), Class.PALADIN_RETRIBUTION, Result.WIN,
@@ -400,7 +401,7 @@ public class DataProvider {
 				Class.ROGUE_ASSASINATION, Result.WIN, "druid first down");
 		new Fight(new Combination(Class.DEMONHUNTER_HAVOC, Class.SHAMAN_RESTORATION),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
-				Class.ROGUE_ASSASINATION, Result.WIN, "druid first down");
+				Class.SHAMAN_RESTORATION, Result.WIN, "druid first down");
 		new Fight(new Combination(Class.ROGUE_SUBTLETY, Class.MAGE_FIRE),
 				new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
 				Class.MAGE_FIRE, Result.DEFEAT, "");

@@ -3,7 +3,7 @@ package fight;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FightTest {
+public class FightUnitTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldThrowExceptionDueToFocusIsNotContainedInCombination() {

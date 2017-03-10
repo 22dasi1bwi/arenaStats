@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.google.common.collect.Sets;
 
-public class BuildTest {
+public class BuildUnitTest {
 
 	@Test
 	public void shouldReturnTrueForEqualBuilds() {

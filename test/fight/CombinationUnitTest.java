@@ -3,7 +3,7 @@ package fight;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class CombinationTest {
+public class CombinationUnitTest {
 
 	@Test
 	public void shouldReturnTrueForEqualCombination() {

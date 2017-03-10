@@ -21,7 +21,7 @@ import fight.Result;
 import skill.Build;
 import skill.Talent;
 
-public class StatisticTest {
+public class StatisticUnitTest {
 
 	@Before
 	public void provideData() {

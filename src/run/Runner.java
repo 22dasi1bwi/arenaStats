@@ -1,4 +1,5 @@
 package run;
+
 import data.AsciiArtPrinter;
 import data.DataProvider;
 import fight.Class;
@@ -9,7 +10,6 @@ import statistic.Statistic;
 public class Runner {
 
 	public static void main(String[] args) {
-
 		DataProvider.provideData();
 
 		AsciiArtPrinter.draw();
@@ -17,6 +17,6 @@ public class Runner {
 
 		stats.printGeneralInformation();
 		stats.printStatsForCombination(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
-		stats.printOverallClassPresence(stats.getAllFights());
+		stats.printOverallClassPresence(Fight.getAll());
 	}
 }

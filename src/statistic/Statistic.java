@@ -196,8 +196,4 @@ public class Statistic {
 		Map<Object, Boolean> map = new ConcurrentHashMap<Object, Boolean>();
 		return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
 	}
-
-	public Collection<Fight> getAllFights() {
-		return allFights;
-	}
 }

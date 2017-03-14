@@ -1,5 +1,6 @@
 package statistic;
 
+import static java.lang.Math.toIntExact;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -154,7 +155,7 @@ public class Statistic {
 		if (!buildsPlayedOnWonFights.isEmpty()) {
 			return Collections
 					.max(buildsPlayedOnWonFights.stream().collect(groupingBy(Build::getBuild, counting())).entrySet(),
-							(entry1, entry2) -> Long.compare(entry1.getValue(), entry2.getValue()))
+							(entry1, entry2) -> toIntExact(entry1.getValue() - entry2.getValue()))
 					.getKey();
 		}
 		return Collections.emptySet();
@@ -164,7 +165,7 @@ public class Statistic {
 		if (!fightsToEvaluate.isEmpty()) {
 			return Collections
 					.max(fightsToEvaluate.stream().collect(groupingBy(Function.identity(), counting())).entrySet(),
-							(entry1, entry2) -> Long.compare(entry1.getValue(), entry2.getValue()))
+							(entry1, entry2) -> toIntExact(entry1.getValue() - entry2.getValue()))
 					.getKey().getFocus();
 		}
 		return Class.NONE;

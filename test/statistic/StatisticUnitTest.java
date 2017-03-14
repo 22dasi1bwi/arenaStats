@@ -24,7 +24,7 @@ import skill.Talent;
 public class StatisticUnitTest {
 
 	@Before
-	public void provideData() {
+	public void clearFights() {
 		Fight.getAll().clear();
 	}
 
@@ -66,8 +66,8 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
 				Result.DEFEAT, "");
 		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS),
-				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
-				Result.DEFEAT, "");
+				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
+				Result.WIN, "");
 		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "");

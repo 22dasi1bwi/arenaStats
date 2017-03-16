@@ -1,9 +1,15 @@
 package fight;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class FightUnitTest {
+
+	@Before
+	public void clearFights() {
+		Fight.getAll().clear();
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void shouldThrowExceptionDueToFocusIsNotContainedInCombination() {

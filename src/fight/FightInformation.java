@@ -4,7 +4,7 @@ import java.util.Collection;
 import skill.Build;
 
 public class FightInformation {
-
+	
 	private Collection<Build> buildsThatWonFight;
 
 	private Build mostValuableBuild;
@@ -16,16 +16,22 @@ public class FightInformation {
 	private Collection<String> notesForLostCombinations;
 
 	private Collection<Build> buildsThatLostFights;
-
+	
+	private long numberOfWonFights;
+	
+	private long numberOfLostfights;
+	
 	public FightInformation(Collection<Build> buildsThatWonFight, Build mostValuableBuild,
 			Class mostValuableFocusTarget, Collection<String> notesForWonCombinations,
-			Collection<String> notesForLostCombinations, Collection<Build> buildsThatLostFights) {
+			Collection<String> notesForLostCombinations, Collection<Build> buildsThatLostFights, long numberOfWonFights, long numberOfLostFights) {
 		this.buildsThatWonFight = buildsThatWonFight;
 		this.mostValuableBuild = mostValuableBuild;
 		this.mostValuableFocusTarget = mostValuableFocusTarget;
 		this.notesForWonCombinations = notesForWonCombinations;
 		this.notesForLostCombinations = notesForLostCombinations;
 		this.buildsThatLostFights = buildsThatLostFights;
+		this.numberOfWonFights = numberOfWonFights;
+		this.numberOfLostfights = numberOfLostFights;
 	}
 
 	public Collection<Build> getBuildsThatWonFight() {
@@ -51,4 +57,14 @@ public class FightInformation {
 	public Collection<Build> getBuildsThatLostFights() {
 		return buildsThatLostFights;
 	}
+
+	public long getNumberOfWonFights() {
+		return numberOfWonFights;
+	}
+
+	public long getNumberOfLostfights() {
+		return numberOfLostfights;
+	}
+	
+	
 }

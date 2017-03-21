@@ -21,7 +21,10 @@ import fight.Result;
 import skill.Build;
 import skill.Talent;
 
+
 public class StatisticUnitTest {
+	
+	private Statistic cut;
 
 	@Before
 	public void clearFights() {
@@ -40,7 +43,9 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
 				Result.DEFEAT, "");
 
-		Collection<Fight> wonFights = Statistic.retrieveWonFights(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+
+		Collection<Fight> wonFights = cut.retrieveWonFights(Fight.getAll());
 		Assert.assertEquals(2, wonFights.size());
 	}
 
@@ -56,7 +61,9 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "");
 
-		Collection<Fight> lostFights = Statistic.retrieveLostFights(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+		
+		Collection<Fight> lostFights = cut.retrieveLostFights(Fight.getAll());
 		Assert.assertEquals(2, lostFights.size());
 	}
 
@@ -72,13 +79,17 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "");
 
-		Class mostValuableFocusTarget = Statistic.getMostValuableFocusTarget(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+		
+		Class mostValuableFocusTarget = cut.getMostValuableFocusTarget(Fight.getAll());
 		Assert.assertEquals(Class.WARRIOR_ARMS, mostValuableFocusTarget);
 	}
 
 	@Test
 	public void shouldReturnNoneIfCollectionIsEmpty() {
-		Class mostValuableFocusTarget = Statistic.getMostValuableFocusTarget(Collections.emptyList());
+		cut = new Statistic(Fight.getAll());
+		
+		Class mostValuableFocusTarget = cut.getMostValuableFocusTarget(Collections.emptyList());
 		Assert.assertEquals(Class.NONE, mostValuableFocusTarget);
 	}
 
@@ -91,7 +102,9 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "pressure on arms was good");
 
-		Collection<String> notesForCombination = Statistic.retrieveNotesForCombinations(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+		
+		Collection<String> notesForCombination = cut.retrieveNotesForCombinations(Fight.getAll());
 		Assert.assertEquals(1, notesForCombination.size());
 		Assert.assertTrue(notesForCombination.contains("pressure on arms was good"));
 	}
@@ -108,7 +121,9 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE, Talent.DIVINE_FAVOR)),
 				Class.WARRIOR_ARMS, Result.WIN, "");
 
-		Set<Talent> mostValuableTalents = Statistic
+		cut = new Statistic(Fight.getAll());
+		
+		Set<Talent> mostValuableTalents = cut
 				.getMostValuableTalents(Fight.getAll().stream().map(Fight::getBuild).collect(Collectors.toList()));
 		Assert.assertEquals(2, mostValuableTalents.size());
 		Assert.assertTrue(mostValuableTalents.containsAll(Arrays.asList(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)));
@@ -116,7 +131,9 @@ public class StatisticUnitTest {
 
 	@Test
 	public void shouldReturnEmptySetWhenThereAreNoFightsToEvaluate() {
-		Set<Talent> mostValuableTalents = Statistic.getMostValuableTalents(Collections.emptyList());
+		cut = new Statistic(Fight.getAll());
+		
+		Set<Talent> mostValuableTalents = cut.getMostValuableTalents(Collections.emptyList());
 		Assert.assertTrue(mostValuableTalents.isEmpty());
 	}
 
@@ -130,7 +147,9 @@ public class StatisticUnitTest {
 		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS), build2, Class.WARRIOR_ARMS, Result.WIN,
 				"");
 
-		Collection<Build> buildsForCombinations = Statistic.retrieveBuildsForCombinations(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+		
+		Collection<Build> buildsForCombinations = cut.retrieveBuildsForCombinations(Fight.getAll());
 
 		Assert.assertEquals(2, buildsForCombinations.size());
 		Assert.assertTrue(buildsForCombinations.contains(build1));
@@ -149,7 +168,9 @@ public class StatisticUnitTest {
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE, Talent.DIVINE_FAVOR)),
 				Class.PRIEST_DISCIPLINE, Result.WIN, "");
 
-		Predicate<Fight> distinctByKey = Statistic.distinctByKey(Fight::getFocus);
+		cut = new Statistic(Fight.getAll());
+		
+		Predicate<Fight> distinctByKey = cut.distinctByKey(Fight::getFocus);
 		List<Fight> distinctByFocusTarget = Fight.getAll().stream().filter(distinctByKey).collect(Collectors.toList());
 
 		Assert.assertEquals(2, distinctByFocusTarget.size());
@@ -170,7 +191,9 @@ public class StatisticUnitTest {
 		new Fight(new Combination(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS), build3, Class.WARRIOR_ARMS, Result.WIN,
 				"");
 
-		Collection<Build> buildsForCombinations = Statistic.retrieveDistinctBuildsForCombinations(Fight.getAll());
+		cut = new Statistic(Fight.getAll());
+		
+		Collection<Build> buildsForCombinations = cut.retrieveDistinctBuildsForCombinations(Fight.getAll());
 
 		Assert.assertEquals(2, buildsForCombinations.size());
 		Assert.assertTrue(buildsForCombinations.contains(build1));

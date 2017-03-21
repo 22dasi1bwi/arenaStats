@@ -6,6 +6,7 @@ import fight.Class;
 import fight.Combination;
 import fight.Fight;
 import statistic.Statistic;
+import statistic.StatisticPrinter;
 
 public class Runner {
 
@@ -14,9 +15,10 @@ public class Runner {
 
 		AsciiArtPrinter.draw();
 		Statistic stats = new Statistic(Fight.getAll());
-
-		stats.printGeneralInformation();
-		stats.printStatsForCombination(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
-		stats.printOverallClassPresence(Fight.getAll());
+		Combination combination = new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION);
+		
+		StatisticPrinter printer = new StatisticPrinter(stats, combination);
+		printer.print();
 	}
+	
 }

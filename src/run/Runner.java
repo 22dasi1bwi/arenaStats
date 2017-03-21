@@ -19,6 +19,7 @@ public class Runner {
 		
 		StatisticPrinter printer = new StatisticPrinter(stats, combination);
 		printer.print();
+		
 	}
 	
 }

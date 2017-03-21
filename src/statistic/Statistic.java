@@ -34,8 +34,8 @@ public final class Statistic {
 	private final Collection<Fight> fights;
 
 	public Statistic(Collection<Fight> data) {
-		long wins = retrieveWonFights(data).size();
-		long defeats = retrieveLostFights(data).size();
+		long wins = retrieveFights(data, Result.WIN).size();
+		long defeats = retrieveFights(data, Result.DEFEAT).size();
 		long totalPlayed = wins + defeats;
 		
 		double winRate = (double) wins / (double) totalPlayed;
@@ -49,8 +49,8 @@ public final class Statistic {
 		List<Fight> fightsForCombination = fights.stream()
 				.filter(fight -> fight.getCombination().equals(combination)).collect(Collectors.toList());
 
-		Collection<Fight> wonFightsForCombination = retrieveWonFights(fightsForCombination);
-		Collection<Fight> lostFightsForCombination = retrieveLostFights(fightsForCombination);
+		Collection<Fight> wonFightsForCombination = retrieveFights(fightsForCombination, Result.WIN);
+		Collection<Fight> lostFightsForCombination = retrieveFights(fightsForCombination, Result.DEFEAT);
 
 		return analyzeInformationForCombination(wonFightsForCombination, lostFightsForCombination);
 	}
@@ -102,16 +102,12 @@ public final class Statistic {
 					.max(fightsToEvaluate.stream().collect(groupingBy(Function.identity(), counting())).entrySet(),
 							(entry1, entry2) -> toIntExact(entry1.getValue() - entry2.getValue()))
 					.getKey().getFocus();
-		}
+		}			
 		return Class.NONE;
 	}
 
-	Collection<Fight> retrieveWonFights(Collection<Fight> fightsToEvaluate) {
-		return fightsToEvaluate.stream().filter(fight -> fight.getResult().equals(Result.WIN)).collect(toList());
-	}
-
-	Collection<Fight> retrieveLostFights(Collection<Fight> fightsToEvaluate) {
-		return fightsToEvaluate.stream().filter(fight -> fight.getResult().equals(Result.DEFEAT)).collect(toList());
+	Collection<Fight> retrieveFights(Collection<Fight> fightsToEvaluate, Result result) {
+		return fightsToEvaluate.stream().filter(fight -> fight.getResult().equals(result)).collect(toList());
 	}
 
 	Collection<String> retrieveNotesForCombinations(Collection<Fight> fightsForCombination) {

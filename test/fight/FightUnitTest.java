@@ -1,17 +1,17 @@
 package fight;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class FightUnitTest {
 
-	@Before
+	@BeforeMethod
 	public void clearFights() {
 		Fight.getAll().clear();
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void shouldThrowExceptionDueToFocusIsNotContainedInCombination() {
 		new Fight(new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION), null, Class.SHAMAN_ELEMENTAL, null,
 				null);

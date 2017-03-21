@@ -1,7 +1,7 @@
 package fight;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class CombinationUnitTest {
 
@@ -40,7 +40,7 @@ public class CombinationUnitTest {
 		Assert.assertTrue(comb.containsClass(fight.getFocus()));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void shouldReturnFalseIfCombinationDoesNotContainFocusTarget() {
 		Combination comb = new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION);
 		new Fight(comb, null, Class.SHAMAN_ELEMENTAL, null, null);

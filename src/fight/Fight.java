@@ -1,7 +1,6 @@
 package fight;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import skill.Build;
 
@@ -34,8 +33,8 @@ public class Fight {
 		ALL.add(this);
 	}
 
-	public List<Class> getCombination() {
-		return combination.getClasses();
+	public Combination getCombination() {
+		return combination;
 	}
 
 	public Build getBuild() {

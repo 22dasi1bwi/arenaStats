@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -225,5 +226,25 @@ public class StatisticUnitTest {
 		Assert.assertEquals(2, buildsForCombinations.size());
 		Assert.assertTrue(buildsForCombinations.contains(build1));
 		Assert.assertTrue(buildsForCombinations.contains(build2));
+	}
+	
+	@Test
+	void shouldOnlyContainOccuredClasses (){
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
+				Result.WIN, "");
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.HUNTER_BEASTMASTERY)),
+				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
+				Result.WIN, "");
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.SHAMAN_ELEMENTAL, Class.DEMONHUNTER_HAVOC, Class.PALADIN_HOLY, Class.HUNTER_BEASTMASTERY)),
+				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE, Talent.DIVINE_FAVOR)),
+				Class.SHAMAN_ELEMENTAL, Result.WIN, "");
+	
+		cut = new Statistic(Fight.getAll());
+		
+		Map<Class, Double> classOccurrence = cut.getOverallClassOccurrence();
+		Assert.assertTrue(classOccurrence.size() == 6);
+		Assert.assertTrue(classOccurrence.keySet().containsAll(
+					Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.HUNTER_BEASTMASTERY, Class.SHAMAN_ELEMENTAL, Class.DEMONHUNTER_HAVOC, Class.PALADIN_HOLY)));
 	}
 }

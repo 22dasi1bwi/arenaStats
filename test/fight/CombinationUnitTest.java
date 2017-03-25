@@ -12,8 +12,8 @@ public class CombinationUnitTest {
 		Combination comb1 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 		Combination comb2 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 
-		Assert.assertTrue(comb1.getClasses().containsAll(comb2.getClasses()));
-		Assert.assertTrue(comb2.getClasses().containsAll(comb1.getClasses()));
+		Assert.assertTrue(comb1.equals(comb2));
+		Assert.assertTrue(comb2.equals(comb1));
 	}
 
 	@Test
@@ -21,8 +21,8 @@ public class CombinationUnitTest {
 		Combination comb1 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 		Combination comb2 = new Combination(Arrays.asList(Class.DRUID_RESTORATION, Class.DEMONHUNTER_HAVOC));
 
-		Assert.assertTrue(comb1.getClasses().containsAll(comb2.getClasses()));
-		Assert.assertTrue(comb2.getClasses().containsAll(comb1.getClasses()));
+		Assert.assertTrue(comb1.equals(comb2));
+		Assert.assertTrue(comb2.equals(comb1));
 	}
 
 	@Test
@@ -30,8 +30,36 @@ public class CombinationUnitTest {
 		Combination comb1 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 		Combination comb2 = new Combination(Arrays.asList(Class.SHAMAN_ELEMENTAL, Class.DEMONHUNTER_HAVOC));
 
-		Assert.assertFalse(comb1.getClasses().containsAll(comb2.getClasses()));
-		Assert.assertFalse(comb2.getClasses().containsAll(comb1.getClasses()));;
+		Assert.assertFalse(comb1.equals(comb2));
+		Assert.assertFalse(comb2.equals(comb1));
+	}
+
+	@Test
+	public void shouldReturnFalseOnEqualsNull(){
+		Combination comb = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
+		
+		Assert.assertFalse(comb.equals(null));
+	}
+
+	@Test
+	public void shouldReturnFalseOnEqualsDifferentClasses(){
+		Combination comb = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
+		
+		Assert.assertFalse(comb.equals(new Object()));
+	}
+	
+	@Test
+	public void shouldReturnFalseForDifferentCombinationSize(){
+		Combination comb1 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
+		Combination comb2 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION, Class.WARLOCK_AFFLICTION));
+		Combination comb3 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION, Class.WARLOCK_AFFLICTION, Class.PALADIN_HOLY, Class.SHAMAN_ELEMENTAL));
+		
+		Assert.assertFalse(comb1.equals(comb2));
+		Assert.assertFalse(comb2.equals(comb1));
+		Assert.assertFalse(comb1.equals(comb3));
+		Assert.assertFalse(comb3.equals(comb1));
+		Assert.assertFalse(comb3.equals(comb2));
+		Assert.assertFalse(comb2.equals(comb3));
 	}
 
 	@Test
@@ -41,6 +69,7 @@ public class CombinationUnitTest {
 
 		Assert.assertTrue(comb.getClasses().contains(fight.getFocus()));
 	}
+	
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
 	public void shouldReturnThrowExceptionIfCombinationDoesNotContainFocusTarget() {

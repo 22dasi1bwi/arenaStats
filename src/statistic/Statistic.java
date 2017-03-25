@@ -46,8 +46,7 @@ public final class Statistic {
 
 	public FightInformation getStatisticForCombination(Combination combination) {
 		List<Fight> fightsForCombination = fights.stream()
-				.filter(fight -> fight.getCombination().size() == combination.getClasses().size())
-				.filter(fight -> fight.getCombination().containsAll(combination.getClasses()))
+				.filter(fight -> fight.getCombination().equals(combination))
 				.collect(Collectors.toList());
 
 		Collection<Fight> wonFightsForCombination = retrieveFights(fightsForCombination, Result.WIN);
@@ -57,7 +56,7 @@ public final class Statistic {
 	}
 	
 	Map<Class, Double> getOverallClassOccurrence() {
-		Map<Class, Long> classCounts = fights.stream().flatMap(fight -> fight.getCombination().stream())
+		Map<Class, Long> classCounts = fights.stream().flatMap(fight -> fight.getCombination().getClasses().stream())
 				.collect(groupingBy(Function.identity(), counting()));
 		return calculatePresence(classCounts);
 	}

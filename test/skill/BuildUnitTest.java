@@ -26,6 +26,20 @@ public class BuildUnitTest {
 	}
 
 	@Test
+	public void shouldReturnFalseOnEqualsNull() {
+		Build build1 = new Build(Sets.newHashSet(Talent.BEACON_OF_FAITH, Talent.DIVINE_FAVOR));
+		
+		Assert.assertFalse(build1.equals(null));
+	}
+
+	@Test
+	public void shouldReturnFalseOnEqualsDifferentClass() {
+		Build build1 = new Build(Sets.newHashSet(Talent.BEACON_OF_FAITH, Talent.DIVINE_FAVOR));
+		
+		Assert.assertFalse(build1.equals(new Object()));
+	}
+	
+	@Test
 	public void shouldReturnFalseForBuildThatIsASubsetOfAnother() {
 		Build build1 = new Build(Sets.newHashSet(Talent.BEACON_OF_FAITH, Talent.CRUSADER));
 		Build build2 = new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BEACON_OF_FAITH, Talent.DIVINE_FAVOR));

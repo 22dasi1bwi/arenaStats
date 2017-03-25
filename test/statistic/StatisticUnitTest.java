@@ -34,13 +34,13 @@ public class StatisticUnitTest {
 
 	@Test
 	 void shouldReturnOnlyWonFights() {
-		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_FROST)),
 				new Build(Sets.newHashSet(Talent.CRUSADER, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS, Result.WIN,
 				"Next time blessed hands");
 		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
 				new Build(Sets.newHashSet(Talent.CRUSADER, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
 				Result.WIN, "");
-		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_UNHOLY, Class.DEMONHUNTER_HAVOC, Class.PALADIN_HOLY)),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
 				Result.DEFEAT, "");
 
@@ -52,15 +52,15 @@ public class StatisticUnitTest {
 
 	@Test
 	 void shouldReturnOnlyLostFights() {
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_FROST)),
+				new Build(Sets.newHashSet(Talent.CRUSADER, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS, Result.WIN,
+				"Next time blessed hands");
 		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+				new Build(Sets.newHashSet(Talent.CRUSADER, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
+				Result.DEFEAT, "");
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_UNHOLY, Class.DEMONHUNTER_HAVOC, Class.PALADIN_HOLY)),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
 				Result.DEFEAT, "");
-		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
-				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.PRIEST_DISCIPLINE,
-				Result.DEFEAT, "");
-		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
-				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
-				Result.WIN, "");
 
 		cut = new Statistic(Fight.getAll());
 		
@@ -68,6 +68,7 @@ public class StatisticUnitTest {
 		Assert.assertEquals(2, lostFights.size());
 	}
 
+	// there is no need to check for different combinations in combination related tests
 	@Test
 	 void shouldReturnArmsAsMostValuableTarget() {
 		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
@@ -94,6 +95,7 @@ public class StatisticUnitTest {
 		Assert.assertEquals(Class.NONE, mostValuableFocusTarget);
 	}
 
+	// there is no need to check for different combinations in combination related tests 
 	@Test
 	 void shouldReturnDistinctNotesFromFights() {
 		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
@@ -110,6 +112,7 @@ public class StatisticUnitTest {
 		Assert.assertTrue(notesForCombination.contains("pressure on arms was good"));
 	}
 
+	// there is no need to check for different combinations in combination related tests
 	@Test
 	 void shouldReturnTheMostValuableTalents() {
 		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
@@ -138,6 +141,7 @@ public class StatisticUnitTest {
 		Assert.assertTrue(mostValuableTalents.isEmpty());
 	}
 
+	// there is no need to check for different combinations in combination related tests
 	@Test
 	 void shouldReturnTheBuildsForTheGivenFights() {
 		Build build1 = new Build(Sets.newHashSet(Talent.DIVINE_FAVOR, Talent.CRUSADER));
@@ -159,10 +163,10 @@ public class StatisticUnitTest {
 
 	@Test
 	 void shouldReturnArmsOnlyOnce() {
-		Fight fight1 = new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+		Fight fight1 = new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_FROST, Class.PALADIN_HOLY, Class.PALADIN_RETRIBUTION)),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "");
-		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
+		new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS, Class.DEATHKNIGHT_UNHOLY)),
 				new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.FIST_OF_JUSTICE)), Class.WARRIOR_ARMS,
 				Result.WIN, "");
 		Fight fight3 = new Fight(new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS)),
@@ -179,6 +183,7 @@ public class StatisticUnitTest {
 		Assert.assertTrue(distinctByFocusTarget.contains(fight3));
 	}
 	
+	// there is no need to check for different combinations in combination related tests
 	@Test
 	void shouldReturnTheCorrectAmountOfWonAndLostFights (){
 		Combination combination = new Combination(Arrays.asList(Class.PRIEST_DISCIPLINE, Class.WARRIOR_ARMS));
@@ -199,6 +204,7 @@ public class StatisticUnitTest {
 
 	}
 
+	// there is no need to check for different combinations in combination related tests
 	@Test
 	 void shouldReturnTheDistinctBuildsForTheGivenFights() {
 		Build build1 = new Build(Sets.newHashSet(Talent.DIVINE_FAVOR, Talent.CRUSADER));

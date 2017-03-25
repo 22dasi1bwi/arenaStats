@@ -30,8 +30,8 @@ public class CombinationUnitTest {
 		Combination comb1 = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 		Combination comb2 = new Combination(Arrays.asList(Class.SHAMAN_ELEMENTAL, Class.DEMONHUNTER_HAVOC));
 
-		Assert.assertFalse(comb1.equals(comb2));
-		Assert.assertFalse(comb2.equals(comb1));
+		Assert.assertFalse(comb1.getClasses().containsAll(comb2.getClasses()));
+		Assert.assertFalse(comb2.getClasses().containsAll(comb1.getClasses()));;
 	}
 
 	@Test
@@ -43,9 +43,14 @@ public class CombinationUnitTest {
 	}
 
 	@Test(expectedExceptions = IllegalArgumentException.class)
-	public void shouldReturnFalseIfCombinationDoesNotContainFocusTarget() {
+	public void shouldReturnThrowExceptionIfCombinationDoesNotContainFocusTarget() {
 		Combination comb = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION));
 		new Fight(comb, null, Class.SHAMAN_ELEMENTAL, null, null);
 	}
-
+	
+	@Test(expectedExceptions = IllegalArgumentException.class)
+	public void shouldThrowExceptionIfTheCombinationIsInvalidInSize() {
+		Combination comb = new Combination(Arrays.asList(Class.DEATHKNIGHT_BLOOD));
+		new Fight(comb, null, Class.DEATHKNIGHT_BLOOD, null, null);
+	}
 }

@@ -3,7 +3,6 @@ package statistic;
 import java.util.Map;
 import java.util.Optional;
 
-import fight.Class;
 import fight.Combination;
 import fight.FightInformation;
 
@@ -13,7 +12,10 @@ public class StatisticPrinter {
 
 	private Optional<Combination> combination;
 	
-	public StatisticPrinter(Statistic stats, Combination combination ) {
+	public StatisticPrinter(Statistic stats, Combination combination) {
+		if(stats == null){
+			throw new IllegalArgumentException("You have to provide information about your fights");
+		}
 		this.stats = stats;
 		this.combination = Optional.ofNullable(combination);
 	}
@@ -37,8 +39,7 @@ public class StatisticPrinter {
 
 	private void printStatisticForCombination(){
 		Combination availableCombination = combination.get();
-		System.out.println("\n\nRetrieving matches for combination [" + availableCombination.getFirstClass() + " / "
-				+ availableCombination.getSecondClass() + "] ...");
+		System.out.println("\n\nRetrieving matches for combination " + availableCombination.getClasses());
 		
 		FightInformation fightInformation = stats.getStatisticForCombination(availableCombination);
 		
@@ -60,7 +61,7 @@ public class StatisticPrinter {
 		Map<fight.Class, Double> overallClassOccurrence = stats.getOverallClassOccurrence();
 		
 		overallClassOccurrence.entrySet().stream()
-										 .sorted(Map.Entry.<Class, Double>comparingByValue().reversed())
+										 .sorted(Map.Entry.<fight.Class, Double>comparingByValue().reversed())
 										 .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue() + "%"));
 	}
 }

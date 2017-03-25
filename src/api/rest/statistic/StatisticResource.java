@@ -1,5 +1,6 @@
 package api.rest.statistic;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import javax.ws.rs.GET;
@@ -20,9 +21,10 @@ public class StatisticResource {
 	@Path("combination")
 	public Response getStatisticForCombination(@QueryParam(value = "firstClass") Class firstClass,
 			@QueryParam(value = "secondClass") Class secondClass) {
-		Combination combination = new Combination(firstClass, secondClass);
+		Combination combination = new Combination(Arrays.asList(firstClass, secondClass));
 		// TODO: build an Statistic API to separately return the needed
 		// information
+		
 
 		return Response.ok(combination).build();
 	}

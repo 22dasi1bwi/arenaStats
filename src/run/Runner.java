@@ -1,5 +1,7 @@
 package run;
 
+import java.util.Arrays;
+
 import data.AsciiArtPrinter;
 import data.DataProvider;
 import fight.Class;
@@ -15,11 +17,9 @@ public class Runner {
 
 		AsciiArtPrinter.draw();
 		Statistic stats = new Statistic(Fight.getAll());
-		Combination combination = new Combination(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION);
+		Combination combination = new Combination(Arrays.asList(Class.DEMONHUNTER_HAVOC, Class.DRUID_RESTORATION, Class.SHAMAN_ELEMENTAL));
 		
 		StatisticPrinter printer = new StatisticPrinter(stats, combination);
 		printer.print();
-		
 	}
-	
 }

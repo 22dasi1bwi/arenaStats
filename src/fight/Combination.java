@@ -1,50 +1,32 @@
 package fight;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.IntStream;
+
 public class Combination {
 
-	private Class firstClass;
-
-	private Class secondClass;
-
-	public Combination(Class firstClass, Class secondClass) {
-		this.firstClass = firstClass;
-		this.secondClass = secondClass;
+	private List<Class> classes;
+	
+	private static final int [] validCombinationSize = {2, 3, 5};
+	
+	public Combination(List<Class> classes){
+		this.classes = classes;
+		validateCombination();
 	}
-
-	public Class getFirstClass() {
-		return firstClass;
+	
+	private void validateCombination(){
+		if(!isValidCombinationSize())
+			throw new IllegalArgumentException("You have entered an invalid combination size. Valid values are: " + Arrays.toString(validCombinationSize));
 	}
+	
 
-	public Class getSecondClass() {
-		return secondClass;
+	private boolean isValidCombinationSize(){
+		return IntStream.of(validCombinationSize).anyMatch(validSize -> validSize == classes.size());
 	}
-
-	public boolean containsClass(Class clazz) {
-		if (firstClass.equals(clazz) || secondClass.equals(clazz)) {
-			return true;
-		}
-		return false;
+	
+	public List<Class> getClasses(){
+		return classes;
 	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (!this.getClass().equals(obj.getClass())) {
-			return false;
-		}
-		Combination combination = (Combination) obj;
-
-		if (this.firstClass.equals(combination.firstClass) && this.secondClass.equals(combination.secondClass)
-				|| this.firstClass.equals(combination.secondClass) && this.secondClass.equals(combination.firstClass)) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public String toString() {
-		return firstClass + " / " + secondClass;
-	}
+	
 }

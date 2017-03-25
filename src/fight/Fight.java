@@ -1,6 +1,7 @@
 package fight;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import skill.Build;
 
@@ -25,7 +26,7 @@ public class Fight {
 		this.result = result;
 		this.note = note;
 
-		if (!combination.containsClass(focus)) {
+		if (!combination.getClasses().contains(focus)) {
 			throw new IllegalArgumentException(
 					"You cannot specify a focus target which is not contained in the combination you are actually facing!");
 		}
@@ -33,8 +34,8 @@ public class Fight {
 		ALL.add(this);
 	}
 
-	public Combination getCombination() {
-		return combination;
+	public List<Class> getCombination() {
+		return combination.getClasses();
 	}
 
 	public Build getBuild() {

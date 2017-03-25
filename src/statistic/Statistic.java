@@ -17,7 +17,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import fight.Class;
 import fight.Combination;
@@ -45,9 +44,11 @@ public final class Statistic {
 	    this.fights = data;
 	}
 
-	FightInformation getStatisticForCombination(Combination combination) {
+	public FightInformation getStatisticForCombination(Combination combination) {
 		List<Fight> fightsForCombination = fights.stream()
-				.filter(fight -> fight.getCombination().equals(combination)).collect(Collectors.toList());
+				.filter(fight -> fight.getCombination().size() == combination.getClasses().size())
+				.filter(fight -> fight.getCombination().containsAll(combination.getClasses()))
+				.collect(Collectors.toList());
 
 		Collection<Fight> wonFightsForCombination = retrieveFights(fightsForCombination, Result.WIN);
 		Collection<Fight> lostFightsForCombination = retrieveFights(fightsForCombination, Result.DEFEAT);
@@ -56,10 +57,8 @@ public final class Statistic {
 	}
 	
 	Map<Class, Double> getOverallClassOccurrence() {
-		Map<Class, Long> classCounts = fights.stream().map(Fight::getCombination)
-				.flatMap(combination -> Stream.of(combination.getFirstClass(), combination.getSecondClass()))
+		Map<Class, Long> classCounts = fights.stream().flatMap(fight -> fight.getCombination().stream())
 				.collect(groupingBy(Function.identity(), counting()));
-		
 		return calculatePresence(classCounts);
 	}
 

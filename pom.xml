@@ -32,7 +32,7 @@
 	<build>
 		<finalName>ArenaStatisticTracker</finalName>
 		<plugins>
-		
+
 			<plugin>
 				<groupId>org.wildfly.swarm</groupId>
 				<artifactId>wildfly-swarm-plugin</artifactId>
@@ -45,7 +45,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
+
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
@@ -54,12 +55,12 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 
 	<dependencies>
-		
+
 		<!-- Java EE 7 dependency -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -67,7 +68,7 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -78,14 +79,24 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>21.0</version>
-		
 		</dependency>
-		
+
 		<!-- WildFly Swarm Fractions -->
 		<dependency>
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>jpa</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>datasources</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.193</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>ejb</artifactId>
@@ -98,5 +109,6 @@
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>cdi</artifactId>
 		</dependency>
+
 	</dependencies>
 </project>

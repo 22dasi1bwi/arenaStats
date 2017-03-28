@@ -1,26 +1,38 @@
 package sda.ArenaStatisticTracker.fight;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import sda.ArenaStatisticTracker.build.Build;
 
 
 @Entity
-@NamedQueries({ @NamedQuery(name = "Fight.findAll", query = "SELECT * FROM Fight") })
-public class Fight {
+@NamedQueries({ @NamedQuery(name = "Fight.findAll", query = "SELECT f FROM Fight f") })
+@Table(name = "FIGHT")
+public class Fight implements Serializable{
 
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
+    @Column(name = "FIGHT_ID", nullable = false)
     @GeneratedValue
     private long id;
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "fight", cascade = CascadeType.ALL)
     private Combination combination;
 
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "fight", cascade = CascadeType.ALL)
     private Build build;
 
     private WoWClass focus;
@@ -30,6 +42,10 @@ public class Fight {
     private String note;
 
     private static final ArrayList<Fight> ALL = new ArrayList<>();
+    
+    public Fight(){
+    	
+    }
 
     public Fight(Combination combination, Build build, WoWClass focus, Result result, String note) {
         this.combination = combination;
@@ -44,6 +60,10 @@ public class Fight {
         }
 
         ALL.add(this);
+    }
+    
+    public long getId(){
+    	return id;
     }
 
     public Combination getCombination() {

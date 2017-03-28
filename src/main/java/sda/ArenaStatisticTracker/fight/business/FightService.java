@@ -13,7 +13,7 @@ import sda.ArenaStatisticTracker.fight.Fight;
 @Stateless
 public class FightService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "hibernateUnit")
     private EntityManager em;
 
     public Collection<Fight> findAllFights() {
@@ -24,5 +24,10 @@ public class FightService {
     public Collection<Fight> storeFights(Collection<Fight> fights) {
         em.persist(fights);
         return fights;
+    }
+    
+    public Fight storeFight(Fight fight){
+    	em.persist(fight);
+    	return fight;
     }
 }

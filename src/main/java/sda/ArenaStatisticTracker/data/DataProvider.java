@@ -692,9 +692,7 @@ public class DataProvider {
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.DRUID_RESTORATION,
                 Result.DEFEAT, "");
-    }
-
-    void test() {
+        
         new DataProvider().fightService.storeFights(Fight.getAll());
     }
 }

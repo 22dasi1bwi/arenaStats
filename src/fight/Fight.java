@@ -2,64 +2,75 @@ package fight;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
 import skill.Build;
 
+@Entity
+@NamedQueries({ @NamedQuery(name = "Fight.findAll", query = "SELECT * FROM Fight") })
 public class Fight {
 
-	private Combination combination;
+    @Id
+    @GeneratedValue
+    private long id;
 
-	private Build build;
+    private Combination combination;
 
-	private Class focus;
+    private Build build;
 
-	private Result result;
+    private Class focus;
 
-	private String note;
+    private Result result;
 
-	private static final ArrayList<Fight> ALL = new ArrayList<>();
+    private String note;
 
-	public Fight(Combination combination, Build build, Class focus, Result result, String note) {
-		this.combination = combination;
-		this.build = build;
-		this.focus = focus;
-		this.result = result;
-		this.note = note;
+    private static final ArrayList<Fight> ALL = new ArrayList<>();
 
-		if (!combination.getClasses().contains(focus)) {
-			throw new IllegalArgumentException(
-					"You cannot specify a focus target which is not contained in the combination you are actually facing!");
-		}
+    public Fight(Combination combination, Build build, Class focus, Result result, String note) {
+        this.combination = combination;
+        this.build = build;
+        this.focus = focus;
+        this.result = result;
+        this.note = note;
 
-		ALL.add(this);
-	}
+        if (!combination.getClasses().contains(focus)) {
+            throw new IllegalArgumentException(
+                    "You cannot specify a focus target which is not contained in the combination you are actually facing!");
+        }
 
-	public Combination getCombination() {
-		return combination;
-	}
+        ALL.add(this);
+    }
 
-	public Build getBuild() {
-		return build;
-	}
+    public Combination getCombination() {
+        return combination;
+    }
 
-	public Class getFocus() {
-		return focus;
-	}
+    public Build getBuild() {
+        return build;
+    }
 
-	public Result getResult() {
-		return result;
-	}
+    public Class getFocus() {
+        return focus;
+    }
 
-	public String getNote() {
-		return note;
-	}
+    public Result getResult() {
+        return result;
+    }
 
-	public static ArrayList<Fight> getAll() {
-		return ALL;
-	}
+    public String getNote() {
+        return note;
+    }
 
-	@Override
-	public String toString() {
-		return " with Build: " + getBuild() + " and focus on: " + getFocus() + " lead to: " + result + ". (NOTE: "
-				+ getNote() + ")";
-	}
+    public static ArrayList<Fight> getAll() {
+        return ALL;
+    }
+
+    @Override
+    public String toString() {
+        return " with Build: " + getBuild() + " and focus on: " + getFocus() + " lead to: " + result + ". (NOTE: " + getNote() + ")";
+    }
 }

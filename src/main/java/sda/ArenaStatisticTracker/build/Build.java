@@ -24,62 +24,74 @@ import sda.ArenaStatisticTracker.fight.Fight;
 @Table(name = "BUILD")
 public class Build implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue
-	private long id;
-	
-	@ElementCollection(targetClass = Talent.class)
-	@Enumerated(EnumType.STRING)
-	@Column(name = "BUILD")
-	private Set<Talent> build;
-	
-	@OneToOne(fetch = FetchType.LAZY)
-	@PrimaryKeyJoinColumn
-	private Fight fight;
+    @Id
+    @GeneratedValue
+    private long id;
 
-	public static final Build EMPTY_BUILD = new Build(Sets.newHashSet());
+    @ElementCollection(targetClass = Talent.class)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "BUILD")
+    private Set<Talent> build;
 
-	public Build(){
-		
-	}
-	
-	public Build(Set<Talent> build) {
-		this.build = build;
-	}
+    @OneToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn
+    private Fight fight;
 
-	public Set<Talent> getBuild() {
-		return build;
-	}
-	
-	public long getId(){
-		return id;
-	}
-	
-	public Fight getFight(){
-		return fight;
-	}
+    public static final Build EMPTY_BUILD = new Build(Sets.newHashSet());
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (!this.getClass().equals(obj.getClass())) {
-			return false;
-		}
-		Build other = (Build) obj;
+    public Build() {
 
-		if (this.build.containsAll(other.build) && this.build.size() == other.build.size()) {
-			return true;
-		}
-		return false;
-	}
+    }
 
-	@Override
-	public String toString() {
-		return build.stream().map(talent -> talent.name()).collect(Collectors.toList()).toString();
-	}
+    public Build(Set<Talent> build) {
+        this.build = build;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Set<Talent> getBuild() {
+        return build;
+    }
+
+    public void setBuild(Set<Talent> build) {
+        this.build = build;
+    }
+
+    public Fight getFight() {
+        return fight;
+    }
+
+    public void setFight(Fight fight) {
+        this.fight = fight;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!this.getClass().equals(obj.getClass())) {
+            return false;
+        }
+        Build other = (Build) obj;
+
+        if (this.build.containsAll(other.build) && this.build.size() == other.build.size()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return build.stream().map(talent -> talent.name()).collect(Collectors.toList()).toString();
+    }
 
 }

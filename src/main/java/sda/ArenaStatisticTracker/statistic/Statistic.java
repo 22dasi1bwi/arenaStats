@@ -25,8 +25,6 @@ import sda.ArenaStatisticTracker.fight.FightInformation;
 import sda.ArenaStatisticTracker.fight.Result;
 import sda.ArenaStatisticTracker.fight.WoWClass;
 
-
-
 public final class Statistic {
 
     private GeneralStatisticInformation generalStatisticInformation;
@@ -58,8 +56,10 @@ public final class Statistic {
     }
 
     Map<sda.ArenaStatisticTracker.fight.WoWClass, Double> getOverallClassOccurrence() {
-        Map<sda.ArenaStatisticTracker.fight.WoWClass, Long> classCounts = fights.stream().flatMap(fight -> fight.getCombination().getClasses().stream()).collect(
-                groupingBy(Function.identity(), counting()));
+        Map<sda.ArenaStatisticTracker.fight.WoWClass, Long> classCounts = fights
+                .stream()
+                .flatMap(fight -> fight.getCombination().getWowClasses().stream())
+                .collect(groupingBy(Function.identity(), counting()));
         return calculatePresence(classCounts);
     }
 

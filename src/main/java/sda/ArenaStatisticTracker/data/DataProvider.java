@@ -182,18 +182,20 @@ public class DataProvider {
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.MAGE_FIRE)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.RELENTLESS)), WoWClass.MAGE_FIRE, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_DISCIPLINE, WoWClass.ROGUE_ASSASINATION)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.ROGUE_ASSASINATION, Result.DEFEAT,
-                "pressure on rogue was good");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.ROGUE_ASSASINATION,
+                Result.DEFEAT, "pressure on rogue was good");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.DEATHKNIGHT_UNHOLY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.MONK_MISTWEAVER, Result.WIN, "");
-        new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.ROGUE_SUBTLETY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DRUID_RESTORATION, Result.DEFEAT,
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.MONK_MISTWEAVER, Result.WIN,
                 "");
+        new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.ROGUE_SUBTLETY)),
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DRUID_RESTORATION,
+                Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.DEATHKNIGHT_UNHOLY)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.MONK_MISTWEAVER, Result.DEFEAT,
                 "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.DEMONHUNTER_HAVOC)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DEMONHUNTER_HAVOC, Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DEMONHUNTER_HAVOC, Result.WIN,
+                "");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_RETRIBUTION, WoWClass.SHAMAN_RESTORATION)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PALADIN_RETRIBUTION, Result.WIN,
                 "");
@@ -201,8 +203,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PRIEST_HOLY, Result.WIN,
                 "Mixed pressure was good");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_WINDWALKER, WoWClass.PRIEST_DISCIPLINE)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PRIEST_DISCIPLINE, Result.DEFEAT,
-                "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PRIEST_DISCIPLINE,
+                Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_BALANCE, WoWClass.PRIEST_DISCIPLINE)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PRIEST_DISCIPLINE, Result.WIN,
                 "crusader was awesome");
@@ -210,13 +212,14 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR)), WoWClass.PRIEST_DISCIPLINE, Result.DEFEAT,
                 "crusader better than hands");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEATHKNIGHT_UNHOLY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DRUID_RESTORATION, Result.DEFEAT,
-                "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.DRUID_RESTORATION,
+                Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.HUNTER_BEASTMASTERY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.RELENTLESS)), WoWClass.HUNTER_BEASTMASTERY, Result.WIN,
-                "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.RELENTLESS)), WoWClass.HUNTER_BEASTMASTERY,
+                Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.DEATHKNIGHT_UNHOLY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.MONK_MISTWEAVER, Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR)), WoWClass.MONK_MISTWEAVER, Result.WIN,
+                "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
@@ -230,11 +233,11 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_HOLY, WoWClass.DEATHKNIGHT_UNHOLY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PALADIN_HOLY,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PALADIN_HOLY, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.ROGUE_ASSASINATION, WoWClass.WARLOCK_DEMONOLOGY)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARLOCK_DEMONOLOGY,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARLOCK_DEMONOLOGY, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DEMONHUNTER_HAVOC, Result.DEFEAT, "");
@@ -263,8 +266,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.PALADIN_RETRIBUTION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.ROGUE_SUBTLETY, WoWClass.SHAMAN_ELEMENTAL)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.SHAMAN_ELEMENTAL,
-                Result.WIN, "crusader was a good choice");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.SHAMAN_ELEMENTAL, Result.WIN, "crusader was a good choice");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.PALADIN_RETRIBUTION)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.WIN, "switched later on to pala");
@@ -281,8 +284,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DEMONHUNTER_HAVOC, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_DISCIPLINE, WoWClass.MAGE_FROST)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.RELENTLESS, Talent.LIGHTS_GRACE)), WoWClass.MAGE_FROST,
-                Result.DEFEAT, "Fear is not affected by relentless");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.RELENTLESS, Talent.LIGHTS_GRACE)),
+                WoWClass.MAGE_FROST, Result.DEFEAT, "Fear is not affected by relentless");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_RETRIBUTION, WoWClass.DEMONHUNTER_HAVOC)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.PALADIN_RETRIBUTION, Result.DEFEAT, "");
@@ -314,8 +317,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)), WoWClass.MAGE_FIRE,
                 Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.WARRIOR_ARMS)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARRIOR_ARMS,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARRIOR_ARMS, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_WINDWALKER, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
@@ -335,11 +338,11 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.MONK_MISTWEAVER, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_HOLY, WoWClass.WARRIOR_FURY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PALADIN_HOLY,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PALADIN_HOLY, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_SHADOW, WoWClass.ROGUE_SUBTLETY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PRIEST_SHADOW,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PRIEST_SHADOW, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_HOLY, WoWClass.MAGE_FROST)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.MAGE_FROST,
                 Result.WIN, "");
@@ -368,8 +371,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_FERAL, WoWClass.SHAMAN_RESTORATION)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.DRUID_FERAL,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.DRUID_FERAL, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.DEFEAT, "");
@@ -401,8 +404,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.SHAMAN_RESTORATION, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_HOLY, WoWClass.DEATHKNIGHT_FROST)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PALADIN_HOLY,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PALADIN_HOLY, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.ROGUE_SUBTLETY, WoWClass.MAGE_FIRE)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE, Talent.BEACON_OF_FAITH)),
                 WoWClass.MAGE_FIRE, Result.WIN, "");
@@ -437,8 +440,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.WARRIOR_ARMS)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARRIOR_ARMS,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARRIOR_ARMS, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DEATHKNIGHT_UNHOLY, WoWClass.MAGE_FIRE)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE, Talent.BEACON_OF_FAITH)),
                 WoWClass.MAGE_FIRE, Result.WIN, "");
@@ -482,8 +485,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE, Talent.BEACON_OF_FAITH)),
                 WoWClass.PRIEST_SHADOW, Result.WIN, "crusader was probably the better choice");
         new Fight(new Combination(Arrays.asList(WoWClass.SHAMAN_RESTORATION, WoWClass.PRIEST_SHADOW)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PRIEST_SHADOW,
-                Result.DEFEAT, "absolutly no chance; crusader + additional beacon");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PRIEST_SHADOW, Result.DEFEAT, "absolutly no chance; crusader + additional beacon");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
@@ -518,11 +521,11 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_DISCIPLINE, WoWClass.PALADIN_RETRIBUTION)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PRIEST_DISCIPLINE,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PRIEST_DISCIPLINE, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DEMONHUNTER_HAVOC, WoWClass.WARRIOR_FURY)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARRIOR_FURY,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARRIOR_FURY, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.SHAMAN_ENHANCEMENT)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.MONK_MISTWEAVER, Result.WIN, "");
@@ -536,8 +539,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.WARRIOR_FURY, WoWClass.DEMONHUNTER_HAVOC)),
-                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARRIOR_FURY,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARRIOR_FURY, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MAGE_FIRE, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART, Talent.BEACON_OF_FAITH)),
                 WoWClass.MAGE_FIRE, Result.WIN, "");
@@ -563,8 +566,8 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "crusader!!!!");
         new Fight(new Combination(Arrays.asList(WoWClass.SHAMAN_RESTORATION, WoWClass.WARLOCK_DEMONOLOGY)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.WARLOCK_DEMONOLOGY,
-                Result.DEFEAT, "");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.WARLOCK_DEMONOLOGY, Result.DEFEAT, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_DISCIPLINE, WoWClass.WARLOCK_AFFLICTION)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE, Talent.BEACON_OF_FAITH)),
                 WoWClass.WARLOCK_AFFLICTION, Result.WIN, "");
@@ -657,14 +660,14 @@ public class DataProvider {
                 WoWClass.ROGUE_ASSASINATION, Result.WIN,
                 "high pressure on assa, so that resto cannot do any dmg / stun to us. separate them from each other and burst on rogue");
         new Fight(new Combination(Arrays.asList(WoWClass.PALADIN_HOLY, WoWClass.SHAMAN_ELEMENTAL)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.SHAMAN_ELEMENTAL,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.SHAMAN_ELEMENTAL, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.PRIEST_DISCIPLINE, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.DEMONHUNTER_HAVOC,
-                Result.WIN, "");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.DEMONHUNTER_HAVOC, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.MONK_MISTWEAVER, WoWClass.ROGUE_ASSASINATION)),
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "switched to monk later on");
@@ -681,8 +684,9 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.HUNTER_SURVIVAL, WoWClass.PRIEST_DISCIPLINE)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.PRIEST_DISCIPLINE,
-                Result.DEFEAT, "not even with full crusader burst at the beginning of the game I was able to heal me up");
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.PRIEST_DISCIPLINE, Result.DEFEAT,
+                "not even with full crusader burst at the beginning of the game I was able to heal me up");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
                 new Build(Sets.newHashSet(Talent.BLESSED_HANDS, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
                 WoWClass.DRUID_RESTORATION, Result.DEFEAT, "");
@@ -690,10 +694,9 @@ public class DataProvider {
                 new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.PURE_OF_HEART)),
                 WoWClass.ROGUE_ASSASINATION, Result.WIN, "");
         new Fight(new Combination(Arrays.asList(WoWClass.DRUID_RESTORATION, WoWClass.DEMONHUNTER_HAVOC)),
-                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)), WoWClass.DRUID_RESTORATION,
-                Result.DEFEAT, "");
-        
+                new Build(Sets.newHashSet(Talent.CRUSADER, Talent.BLIND, Talent.GLADIATOR, Talent.LIGHTS_GRACE)),
+                WoWClass.DRUID_RESTORATION, Result.DEFEAT, "");
+
         new DataProvider().fightService.storeFights(Fight.getAll());
     }
 }
-

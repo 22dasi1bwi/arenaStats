@@ -9,11 +9,10 @@ import javax.persistence.TypedQuery;
 
 import sda.ArenaStatisticTracker.fight.Fight;
 
-
 @Stateless
 public class FightService {
 
-    @PersistenceContext(unitName = "hibernateUnit")
+    @PersistenceContext(unitName = "testPU")
     private EntityManager em;
 
     public Collection<Fight> findAllFights() {
@@ -25,9 +24,9 @@ public class FightService {
         em.persist(fights);
         return fights;
     }
-    
-    public Fight storeFight(Fight fight){
-    	em.persist(fight);
-    	return fight;
+
+    public Fight storeFight(Fight fight) {
+        em.persist(fight);
+        return fight;
     }
 }
